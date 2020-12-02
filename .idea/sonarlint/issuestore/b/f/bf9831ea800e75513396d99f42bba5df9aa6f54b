@@ -1,0 +1,3 @@
+
+X
+java:S5838";Use assertThat(actual).hasToString(expectedString) instead.(Öàæâ8ûí’â.
