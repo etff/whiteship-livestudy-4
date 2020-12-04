@@ -126,4 +126,15 @@ public class ListNode {
         return size;
     }
 
+    public void setNext(ListNode next) {
+        this.next = next;
+    }
+
+    public ListNode getNext() {
+        return next;
+    }
+
+    public int getData() {
+        return (int) data;
+    }
 }

@@ -1,12 +1,14 @@
 package assign4;
 
+import assign2.ListNode;
+
 public class ListNodeStack {
 
-    private ListNodeStack head;
-    private ListNodeStack tail;
+    private ListNode head;
+    private ListNode tail;
 
     private Integer data;
-    private ListNodeStack next;  // 누가 다음 데이터인가
+    private ListNode next;  // 누가 다음 데이터인가
     private int size = 0;
 
     public ListNodeStack() {
@@ -19,21 +21,21 @@ public class ListNodeStack {
     }
 
     public void addFirst(int input) {
-        ListNodeStack newListNode = new ListNodeStack(input);
-        newListNode.next = head;
+        ListNode newListNode = new ListNode(input);
+        newListNode.setNext(head);
         head = newListNode;
         size++;
-        if (head.next == null) {
+        if (head.getNext() == null) {
             tail = head;
         }
     }
 
     public void push(int input) {
-        ListNodeStack newListNode = new ListNodeStack(input);
+        ListNode newListNode = new ListNode(input);
         if (size == 0) {
             addFirst(input);
         } else {
-            tail.next = newListNode;
+            tail.setNext(newListNode);
             tail = newListNode;
             size++;
         }
@@ -41,11 +43,11 @@ public class ListNodeStack {
 
     public int pop() {
         // 삭제 앞 노드의 다음 노드로 삭제 뒤 노드를 지정합니다.
-        ListNodeStack prev = listNode(size - 2);
-        ListNodeStack todoDeleted = prev.next;
+        ListNode prev = listNode(size - 2);
+        ListNode todoDeleted = prev.getNext();
         // 삭제 앞 노드의 다음 노드로 삭제 뒤 노드를 지정합니다.
-        int result = todoDeleted.data;
-        prev.next = null;
+        int result = todoDeleted.getData();
+        prev.setNext(null);
 
         if (todoDeleted == tail) {
             tail = prev;
@@ -55,10 +57,10 @@ public class ListNodeStack {
     }
 
 
-    public ListNodeStack listNode(int index) {
-        ListNodeStack x = head;
+    public ListNode listNode(int index) {
+        ListNode x = head;
         for (int i = 0; i < index; i++) {
-            x = x.next;
+            x = x.getNext();
         }
         return x;
     }
@@ -68,14 +70,14 @@ public class ListNodeStack {
         if (head == null) {
             return "[]";
         }
-        ListNodeStack temp = head;
+        ListNode temp = head;
         String str = "[";
 
-        while (temp.next != null) {
-            str += temp.data + ", ";
-            temp = temp.next;
+        while (temp.getNext() != null) {
+            str += temp.getData() + ", ";
+            temp = temp.getNext();
         }
-        str += temp.data;
+        str += temp.getData();
         return str + "]";
     }
 
