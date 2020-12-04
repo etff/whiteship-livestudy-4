@@ -24,9 +24,10 @@ class ListNodeStackTest {
         listNodeStack.push(10);
         listNodeStack.push(20);
         listNodeStack.push(30);
+        listNodeStack.push(40);
 
-        assertThat(listNodeStack.pop()).isEqualTo(30);
-        assertThat(listNodeStack.getSize()).isEqualTo(2);
-        assertThat(listNodeStack.toString()).isEqualTo("[10, 20]");
+        assertThat(listNodeStack.pop()).isEqualTo(40);
+        assertThat(listNodeStack.getSize()).isEqualTo(3);
+        assertThat(listNodeStack.toString()).isEqualTo("[10, 20, 30]");
     }
 }

@@ -44,12 +44,14 @@ public class ListNodeStack {
         ListNodeStack prev = listNode(size - 2);
         ListNodeStack todoDeleted = prev.next;
         // 삭제 앞 노드의 다음 노드로 삭제 뒤 노드를 지정합니다.
-        prev.next = prev.next;
+        int result = todoDeleted.data;
+        prev.next = null;
+
         if (todoDeleted == tail) {
             tail = prev;
         }
         size--;
-        return data;
+        return result;
     }
 
 
