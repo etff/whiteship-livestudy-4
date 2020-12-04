@@ -91,13 +91,20 @@ public class ListNode {
         return x;
     }
 
-    boolean contains(ListNode head, ListNode nodeTocheck) {
-        ListNode temp = head;
-        int index = 0;
-        while (temp.data != nodeTocheck.data) {
+    public boolean contains(ListNode head, ListNode nodeTocheck) {
+        boolean hasItem = false;
+        if (this.head == null) {
+            this.head = head;
+        }
+        ListNode temp = this.head;
+
+        while (temp != null) {
+            if (temp.data == nodeTocheck.data) {
+                hasItem = true;
+            }
             temp = temp.next;
         }
-        return temp.data != null;
+        return hasItem;
     }
 
     public String toString() {

@@ -65,5 +65,16 @@ class ListNodeTest {
         assertThat(listNode.toString()).isEqualTo("[30, 10]");
     }
 
+    @Test
+    void contains() {
+        ListNode listNode = new ListNode();
+        listNode.addFirst(10);
+        listNode.addFirst(20);
+        listNode.addFirst(30);
+
+        assertThat(listNode.contains(listNode, new ListNode(10))).isTrue();
+        assertThat(listNode.contains(listNode, new ListNode(40))).isFalse();
+    }
+
 
 }
