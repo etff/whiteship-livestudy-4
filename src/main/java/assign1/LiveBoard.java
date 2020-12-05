@@ -3,34 +3,44 @@ package assign1;
 import org.kohsuke.github.*;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LiveBoard {
+    private static final String REPOSITORY_URL = "whiteship/live-study";
 
     public static void main(String[] args) throws IOException {
         GitHub gitHub = GitHub.connectAnonymously();
-        GHRepository repository = gitHub.getRepository("whiteship/live-study");
+        GHRepository repository = gitHub.getRepository(REPOSITORY_URL);
+
         List<GHIssue> issues = repository.getIssues(GHIssueState.ALL);
         Map<String, Integer> map = new HashMap<>();
 
-        for (int i = 16; i < issues.size(); i++) {
+        for (int i = 0; i < issues.size(); i++) {
             GHIssue issue = issues.get(i);
             List<GHIssueComment> comments = issue.getComments();
-            for (GHIssueComment comment : comments) {
-                map.put(comment.getUser().getLogin(), map.getOrDefault(comment.getUser().getLogin(), 0) +1);
+
+            for (String loginId : getCommentedId(comments)) {
+                map.put(loginId, map.getOrDefault(loginId, 0) + 1);
             }
         }
-        printUser(map);
+        printResult(map, issues.size());
     }
 
-    public static void printUser(Map map) {
+    public static Set<String> getCommentedId(List<GHIssueComment> comments) throws IOException {
+        Set<String> ids = new HashSet();
+        for (GHIssueComment comment : comments) {
+            ids.add(comment.getUser().getLogin());
+        }
+        return ids;
+    }
+
+    public static void printResult(Map map, int issueSize) {
         Iterator iterator = map.entrySet().iterator();
-        while(iterator.hasNext()) {
-            Object next = iterator.next();
-            System.out.println(next);
+        while (iterator.hasNext()) {
+            Map.Entry<String, Integer> entry = (Map.Entry) iterator.next();
+            double percent = (double) entry.getValue() / (double) issueSize * 100;
+            System.out.format("%2s : %.2f", entry.getKey(), percent);
+            System.out.print(System.lineSeparator());
         }
     }
 }

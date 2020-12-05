@@ -1,0 +1,11 @@
+
+X
+java:S58385";Use assertThat(actual).hasToString(expectedString) instead.(ùÓ·„8Œ¡ÅÇâ.
+X
+java:S5838";Use assertThat(actual).hasToString(expectedString) instead.(²Î÷8°§¢Çâ.
+]
+java:S5838)";Use assertThat(actual).hasToString(expectedString) instead.(ó£ƒ¸øÿÿÿÿ8±¨ŒÇâ.
+]
+java:S5838";Use assertThat(actual).hasToString(expectedString) instead.(««öìüÿÿÿÿ8ÿ¨†Çâ.
+X
+java:S5838A";Use assertThat(actual).hasToString(expectedString) instead.(×´´Õ8ƒºÔÇâ.

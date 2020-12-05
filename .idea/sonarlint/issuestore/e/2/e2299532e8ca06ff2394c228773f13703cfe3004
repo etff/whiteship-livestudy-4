@@ -1,0 +1,8 @@
+
+M
+java:S1172?"+Remove this unused method parameter "head".(ÜÕ”¦ûÿÿÿÿ8ÿ¨ÎÇâ.
+G
+java:S1481`"*Remove this unused "index" local variable.(ìüà·8ÔÝæÇâ.
+>
+java:S1643o"Use a StringBuilder instead.(ï££Ÿýÿÿÿÿ8ºú¤Æâ.
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(›÷é†
