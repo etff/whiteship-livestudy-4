@@ -15,18 +15,15 @@ public class LiveBoard {
         List<GHIssue> issues = repository.getIssues(GHIssueState.ALL);
         Map<String, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < issues.size(); i++) {
-            GHIssue issue = issues.get(i);
-            List<GHIssueComment> comments = issue.getComments();
-
-            for (String loginId : getCommentedId(comments)) {
+        for (GHIssue issue : issues) {
+            for (String loginId : getLoginIds(issue.getComments())) {
                 map.put(loginId, map.getOrDefault(loginId, 0) + 1);
             }
         }
         printResult(map, issues.size());
     }
 
-    public static Set<String> getCommentedId(List<GHIssueComment> comments) throws IOException {
+    public static Set<String> getLoginIds(List<GHIssueComment> comments) throws IOException {
         Set<String> ids = new HashSet();
         for (GHIssueComment comment : comments) {
             ids.add(comment.getUser().getLogin());
@@ -39,6 +36,7 @@ public class LiveBoard {
         while (iterator.hasNext()) {
             Map.Entry<String, Integer> entry = (Map.Entry) iterator.next();
             double percent = (double) entry.getValue() / (double) issueSize * 100;
+
             System.out.format("%2s : %.2f", entry.getKey(), percent);
             System.out.print(System.lineSeparator());
         }

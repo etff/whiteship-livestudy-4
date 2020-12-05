@@ -3,22 +3,9 @@ package assign4;
 import assign2.ListNode;
 
 public class ListNodeStack {
-
     private ListNode head;
     private ListNode tail;
-
-    private Integer data;
-    private ListNode next;  // 누가 다음 데이터인가
     private int size = 0;
-
-    public ListNodeStack() {
-        this(null);
-    }
-
-    public ListNodeStack(Integer input) {
-        this.data = input;
-        this.next = null;
-    }
 
     public void addFirst(int input) {
         ListNode newListNode = new ListNode(input);

@@ -1,12 +1,12 @@
 package assign3;
 
 public class Stack {
-    private int arr[];
+    private int stack[];
     private int top;
     private int size;
 
     public Stack(int size) {
-        this.arr = new int[size];
+        this.stack = new int[size];
         this.top = -1;
         this.size = size;
     }
@@ -15,12 +15,12 @@ public class Stack {
         if (isFull()) {
             throw new IllegalArgumentException();
         }
-        arr[++top] = data;
+        stack[++top] = data;
     }
 
     public int peek() {
         if (!isEmpty()) {
-            return arr[top];
+            return stack[top];
         }
         return -1;
     }
@@ -29,7 +29,7 @@ public class Stack {
         if (isEmpty()) {
             throw new IllegalStateException();
         }
-        return arr[top--];
+        return stack[top--];
     }
 
     public int size() {
